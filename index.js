@@ -2,35 +2,32 @@
 
 const convertFahrToCelsius = (val) => {
   let value = Number(val);
-  let parameter = typeof value;
-  console.log(val === "");
-  if (val == "" || val == []) {
-    console.log("bagain");
-    // } else if (val == []) {
-    //   console.log("ninm");
-    return `${val} is not a valid number but a/an ${parameter}.`;
-  } else if (isNaN(value)) {
-    value = val;
-    parameter = typeof value;
-    if (Array.isArray(value) || Array.length === 0) {
-      value = `[${val}]`;
-      Array.isArray(value);
-      if (true) parameter = "array";
-    } else if (parameter === "object") {
-      value = JSON.stringify(value);
-    }
-    return `${value} is not a valid number but a/an ${parameter}.`;
-  } else if (parameter === "number") {
+  let vale = val;
+  let para = typeof value;
+  let parameter = typeof val;
+  if (parameter === "number" && !isNaN(value)) {
     const f = ((value - 32) * 5) / 9;
     return f.toFixed(4);
-  } else if (val == "") {
-    console.log("yess");
+  } else if (isNaN(value)) {
+    if (Array.isArray(val) || Array.length == 0) {
+      vale = `[${val}]`;
+      Array.isArray(vale);
+      if (true) parameter = "array";
+    } else if (parameter === "object") {
+      vale = JSON.stringify(val);
+    }
+    return `${vale} is not a valid number but a/an ${parameter}.`;
+  } else {
+    return `"${val}" is not a valid number but a/an ${parameter}.`;
   }
 };
 
-console.log(convertFahrToCelsius([]));
-
-// convertFahrToCelsius("4");
+console.log(convertFahrToCelsius(0));
+console.log(convertFahrToCelsius("0"));
+console.log(convertFahrToCelsius(""));
+console.log(convertFahrToCelsius([1, 2, 3]));
+console.log(convertFahrToCelsius({ twmo: 0 }));
+console.log(convertFahrToCelsius(false));
 
 // checkYuGiOh
 const checkYuGiOh = (n) => {
@@ -63,46 +60,11 @@ const checkYuGiOh = (n) => {
       } else if (i % 5 === 0) {
         arr.push("oh");
       } else {
-        arr.push(i);
+        arr.push(String(i));
       }
     }
     return arr;
   }
 };
 
-console.log(checkYuGiOh([5, 4, 3]));
-
-// // Farenheit to celsius converter
-
-// const convertFahrToCelsius = (val) => {
-//   let value = Number(val);
-//   let parameter = typeof value;
-//   if (parameter === "number") {
-//     const f = ((value - 32) * 5) / 9;
-//     return f.toFixed(4);
-//   } else if (value == []) {
-//     let varl = val;
-//     if (true) parameter = "array";
-//     Array.isArray(varl);
-//     console.log(varl + "sty");
-//     // if (value.length === 0) {
-//     return `[${varl}] is not a valid number but a/an ${parameter}.`;
-//   } else if (value == "") {
-//     let varl = val;
-//     parameter = typeof val;
-//     console.log(varl + "sdfghj");
-//     // if (value.length === 0) {
-//     return `"${varl}" is not a valid number but a/an ${parameter}.`;
-//   } else if (isNaN(value)) {
-//     value = val;
-//     parameter = typeof value;
-//     if (Array.isArray(value) || Array.length === 0) {
-//       value = `[${val}]`;
-//       Array.isArray(value);
-//       if (true) parameter = "array";
-//     } else if (parameter === "object") {
-//       value = JSON.stringify(value);
-//     }
-//     return `${value} is not a valid number but a/an ${parameter}.`;
-//   }
-// };
+console.log(checkYuGiOh(10));
